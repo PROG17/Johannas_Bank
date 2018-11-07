@@ -14,10 +14,21 @@
 
     <div class="col-md-6 col-md-offset-3">
         <h2>Customers</h2>
-        <ul>
+        <ul class="list-unstyled">
+            <li>
+                <div class="row">
+                    <div class="col-md-6 pull-left"><h3>Kund - ID</h3></div>
+                    <div class="col-md-6 pull-right"><h3>Konto - saldo</h3></div>
+                </div>
+            </li>
             @foreach (var customer in Model)
             {
-                <li>@customer.Name - @customer.Account.Balance kr </li>
+                <li>
+                    <div class="row">
+                        <div class="col-md-6 pull-left">@customer.Name - @customer.Id</div>
+                        <div class="col-md-6 pull-right">@customer.Account.Id - @customer.Account.Balance kr</div>
+                    </div> 
+                </li>
             }
         </ul>
     </div>

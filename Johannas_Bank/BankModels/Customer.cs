@@ -7,6 +7,7 @@ namespace Johannas_Bank.BankModels
 {
     public class Customer
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public Account Account { get; set; }
     }

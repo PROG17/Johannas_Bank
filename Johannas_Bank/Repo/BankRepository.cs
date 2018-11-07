@@ -23,16 +23,19 @@ namespace Johannas_Bank.Repo
             {
                 new Customer
                 {
+                    Id = 1,
                     Name = "Stina",
                     Account = Accounts.Where(a => a.Owner == "Stina").FirstOrDefault() 
                 },
                 new Customer
                 {
+                    Id = 2,
                     Name = "Ulla",
                     Account = Accounts.Where(a => a.Owner == "Ulla").FirstOrDefault()
                 },
                 new Customer
                 {
+                    Id = 3,
                     Name = "Erik",
                     Account = Accounts.Where(a => a.Owner == "Erik").FirstOrDefault()
                 }
@@ -45,16 +48,19 @@ namespace Johannas_Bank.Repo
             {
                 new Account
                 {
+                    Id = 891213,
                     Owner = "Erik",
                     Balance = 12000
                 },
                 new Account
                 {
+                    Id = 750912,
                     Owner = "Ulla",
                     Balance = 130000
                 },
                 new Account
                 {
+                    Id = 771030,
                     Owner = "Stina",
                     Balance = 25000
                 }
