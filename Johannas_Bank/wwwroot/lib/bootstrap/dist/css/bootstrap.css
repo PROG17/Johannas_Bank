@@ -6755,3 +6755,11 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+.bank {
+    padding: 0px;
+    margin-left: 10px;
+}
+.myButton{
+    margin-top: 8px;
+}

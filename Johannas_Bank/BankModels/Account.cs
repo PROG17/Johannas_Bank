@@ -9,6 +9,21 @@ namespace Johannas_Bank.BankModels
     {
         public int Id { get; set; }
         public string Owner { get; set; }
-        public int Balance { get; set; }
+        public long Balance { get; set; }
+
+        public bool Deposit(long sum)
+        {
+            Balance += sum;
+            return true;
+        }
+
+        public bool Withdraw(long sum)
+        {
+            if(Balance < sum)
+                return false;           
+            else
+                Balance -= sum;
+                return true;
+        }
     }
 }
