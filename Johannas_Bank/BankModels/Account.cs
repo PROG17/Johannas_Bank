@@ -30,7 +30,18 @@ namespace Johannas_Bank.BankModels
 
         public string WithdrawFromDepositTo(string amount, List<Account> standingList, int number) //Summan, Lista på personerna som det handlar om, numret på kontot som för över
         {
-            var check = Regex.IsMatch(amount, @"[a-zA-Z]");
+            var check = true;
+
+
+            if (amount == null || amount.Contains(",") || amount.Contains("."))
+            {
+                if (amount == null)
+                    return "Du måste fylla i alla rutor";
+
+                else return "Felaktigt format i belopp rutan";
+            }
+
+            check = Regex.IsMatch(amount, @"[a-zA-Z]");
 
             if (check == false) //Inga bokstäver i 
             {
@@ -46,6 +57,8 @@ namespace Johannas_Bank.BankModels
                 {
                     var payToPerson = standingList.Where(x => x.Id != number).FirstOrDefault();
                     var payFromPerson = standingList.Where(x => x.Id == number).FirstOrDefault();
+
+                    
 
                     if (payFromPerson.Balance >= Convert.ToInt64(amount))
                     {
