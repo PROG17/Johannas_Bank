@@ -5,14 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Johannas_Bank.Models;
+using Johannas_Bank.Repo;
+using Johannas_Bank.BankModels;
 
 namespace Johannas_Bank.Controllers
 {
     public class HomeController : Controller
     {
+        private BankRepository _repo;
+
+        public HomeController(BankRepository repo)
+        {
+            _repo = repo;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            List<Customer> viewModel = _repo.Customers;
+
+            return View(viewModel);
         }
 
         public IActionResult About()

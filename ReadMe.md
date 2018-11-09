@@ -1,5 +1,5 @@
 This is a bank application.
 
-product owner: Johanna Åkerström
+product owner: Johanna Ã…kerstrÃ¶m
 
-collaborator: Emma Karlsson
+collaborator: Emma Karlsson, Jonas LindstrÃ¶m

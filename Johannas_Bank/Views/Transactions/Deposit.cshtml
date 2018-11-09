@@ -1,0 +1,19 @@
+﻿@model Johannas_Bank.BankModels.Account
+@{
+    ViewData["Title"] = "Deposit";
+}
+
+<h2>Deposit</h2>
+
+<ul class="list-unstyled">
+    <li>
+        Ägare: @Model.Owner
+    </li>
+    <li>
+        Kontonummer: @Model.Id
+    </li>
+    <li>
+        Saldo: @Model.Balance kr
+    </li>
+</ul>
+
