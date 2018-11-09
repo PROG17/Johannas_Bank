@@ -17,6 +17,19 @@ namespace Johannas_Bank.Repo
             CreateCustomers();            
         }
 
+        public bool Deposit(int account, long sum)
+        {
+            Account depoAccount = Accounts.Where(a => a.Id == account).FirstOrDefault();
+            depoAccount.Deposit(sum);
+            return true;
+        }
+
+        public bool WithDraw(int account, long sum)
+        {
+            Account withdrawAccount = Accounts.Where(a => a.Id == account).FirstOrDefault();
+            return withdrawAccount.Withdraw(sum);
+        }
+
         private void CreateCustomers()
         {
             Customers = new List<Customer>()

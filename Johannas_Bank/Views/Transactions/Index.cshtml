@@ -1,0 +1,60 @@
+﻿@model Johannas_Bank.ViewModels.TransactionVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="text-center">Transaktioner</h2>
+    </div>
+    <br /><br /><br /><br />
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <ul class="list-unstyled">
+            @foreach (var account in Model.Accounts)
+            {
+                <li>Kontonummer: @account.Id - Saldo: @account.Balance kr</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="panel panel-success col-md-7 bank">
+        <div class="panel-heading">
+            <h3>Insättning/Uttag</h3>
+        </div>
+        <div class="panel-body">
+            <form asp-controller="Transactions" asp-action="" method="post" >
+                <div class="col-sm-12">
+                    <label asp-for="Account" class="pull-left"></label>
+                    <input asp-for="Account" class="pull-right" />
+                    <span asp-validation-for="Account" class="text-danger"></span>
+                </div>
+                <div class="col-sm-12">
+                    <label asp-for="Sum" class="pull-left"></label>
+                    <input asp-for="Sum" class="pull-right" />
+                    <span asp-validation-for="Sum" class="text-danger"></span>
+                </div>
+                <div class="col-sm-4 pull-right myButton">
+                    
+                    <input type="submit" class="pull-right btn btn-success" value="Sätt in" formaction="Transactions/Deposit"/>
+                    <input type="submit" class="pull-left btn btn-success" value="Ta ut" formaction="Transactions/WithDraw"/>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
