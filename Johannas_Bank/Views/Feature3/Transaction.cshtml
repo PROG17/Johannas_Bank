@@ -1,0 +1,41 @@
+﻿@model List<Johannas_Bank.BankModels.Customer>
+
+
+@{
+    ViewData["Title"] = "Transaction";
+}
+
+<h2>Överföring</h2>
+
+<div class="row">
+    <div class="col-md-5">
+        <form asp-controller="Feature3" asp-action="Transaction" asp-route-numberFrom="" asp-route-numberTo="" asp-route-amount="" method="post">
+            <label>Från konto: </label>
+            <input type="text" class="form-control" name="numberFrom" placeholder="Från..." />
+
+            <label>Till konto:</label>
+            <input type="text" class="form-control" name="numberTo" placeholder="Till..." />
+
+            <label>Summa:</label>
+            <input type="text" class="form-control" name="amount" placeholder="Summa..."/>
+
+            <input type="submit" class="btn btn-success" style="margin-top:5px" formaction="Transaction" value="Överför" />
+        </form>
+        <h6>@ViewBag.ErrorMessage</h6>
+    </div>
+
+    <div class="col-md-2">
+    </div>
+
+
+    <!--Skriver ut alla konton vid sidan om-->
+
+    <div class="col-md-3">
+
+        @foreach (var item in Model)
+        {
+            <h5>@item.Name med kontonummer: <b>@item.Account.Id </b></h5>
+            <h5>Har just nu: @item.Account.Balance:-</h5>
+        }
+    </div>
+</div>

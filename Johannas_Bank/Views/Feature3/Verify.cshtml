@@ -1,0 +1,17 @@
+﻿@model Johannas_Bank.BankModels.Customer
+@{
+    ViewData["Title"] = "Verify";
+}
+
+<h2>Verifiering av överföring</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h5>
+            @Model.Name med kontonummer @Model.Id har fått en överföring. 
+        </h5>
+        <h5>
+            Nytt saldo på kontot är: @Model.Account.Balance 
+        </h5>
+    </div>
+</div>
