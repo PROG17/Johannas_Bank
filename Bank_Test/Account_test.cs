@@ -16,7 +16,7 @@ namespace Bank_Test
         [InlineData(5)]
         public void Deposit(long sum)
         {
-            Account testAccount = new Account(){ Balance = 5 };
+            Account testAccount = new Account() { Balance = 5 };
 
             bool expected = true;
             bool actual = testAccount.Deposit(sum);
@@ -84,6 +84,38 @@ namespace Bank_Test
             long actual = testAccount.Balance;
 
             Assert.Equal(expected, actual);
+        }
+
+        /*Emmas Unittest*/
+        //Skapa enhetstester som verifierar att saldot på kontot blir korrekt efter överföring på från- respektive till-konto.
+        [Theory]
+        [InlineData(10, 40, 10)]
+        public void Transaction_BalanceIsRight(long sum, long firstExpected, long secondExpected)
+        {
+            Account firstPerson = new Account() { Balance = 50, Id = 1 };
+            Account secondPerson = new Account() { Balance = 0, Id = 2 };
+
+            firstPerson.Withdraw(sum); //Tar från
+            secondPerson.Deposit(sum); //Lägger in
+
+            var result = firstPerson.Balance;
+            var resultTwo = secondPerson.Balance;
+
+            Assert.Equal(firstExpected, result); //Första personens förväntade resultat
+            Assert.Equal(secondExpected, resultTwo); //Andra personens förväntade resultat
+        }
+
+        //Skapa en enhetstest som verifierar att det inte går att överföra mer pengar än det finns saldo på från-kontot.
+        [Theory]
+        [InlineData(10, true)]
+        [InlineData(100, false)]
+        public void TransactionFailure_BalanceIsRight(long sum, bool expected)
+        {
+            Account firstPerson = new Account() { Balance = 50, Id = 1 };
+
+            var isItNot = firstPerson.Withdraw(sum);
+
+            Assert.Equal(expected, isItNot);
         }
     }
 }
