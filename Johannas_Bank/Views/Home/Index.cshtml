@@ -12,21 +12,39 @@
 <div class="row">
     
 
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-8 col-md-offset-2">
         <h2>Customers</h2>
         <ul class="list-unstyled">
             <li>
                 <div class="row">
-                    <div class="col-md-6 pull-left"><h3>Kund - ID</h3></div>
-                    <div class="col-md-6 pull-right"><h3>Konto - saldo</h3></div>
+                    <div class="col-md-3 pull-left"><h3>Kund - ID</h3></div>
+                    <div class="col-md-3"><h3>Konto - saldo</h3></div>
+                    <div class="col-md-6 pull-right"></div>
                 </div>
             </li>
             @foreach (var customer in Model)
             {
                 <li>
                     <div class="row">
-                        <div class="col-md-6 pull-left">@customer.Name - @customer.Id</div>
-                        <div class="col-md-6 pull-right">@customer.Account.Id - @customer.Account.Balance kr</div>
+                        <div class="col-md-3 pull-left">@customer.Name - @customer.Id</div>
+                        <div class="col-md-3">@customer.Account.Id - @customer.Account.Balance kr</div>
+                        <div class="col-md-6 pull-right">
+                            <div class="row">
+                                <form asp-controller="Home" asp-action="SendEmail" method="post">
+                                    <input type="hidden" asp-for="@customer.Id" value="@customer.Id">
+                                    <input type="hidden" asp-for="@customer.Name" value="@customer.Name">
+                                    <input type="hidden" asp-for="@customer.Account.Balance" value="@customer.Account.Balance">
+                                    <input type="hidden" asp-for="@customer.Account.Id" value="@customer.Account.Id">
+                                    <div class="col-sm-6 pull-left">
+                                        <input class="form-control" type="text" name="emailAdress" placeholder="exempel@mail.com" />
+                                    </div>
+                                    <div class="col-sm-6 pull-right">
+                                        <input class="form-control btn btn-success" type="submit" value="skicka kunddata" />
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
                     </div> 
                 </li>
             }
